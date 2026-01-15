@@ -6,6 +6,8 @@ session_start();
 
 require_once __DIR__ . '/controllers/AuthController.php';
 require_once __DIR__ . '/controllers/CustomerController.php';
+require_once __DIR__ . '/controllers/AjaxController.php';
+
 
 $page = $_GET['page'] ?? '';
 
@@ -63,6 +65,12 @@ case 'confirm_order':
     case 'remove_from_cart':
     $customer->removeFromCart();
     break;
+    //ajax
+    case 'ajax_search_books':
+    $ajax = new AjaxController();
+    $ajax->searchBooks();
+    break;
+
 
     default:
         $customer->dashboard();
